@@ -1,0 +1,17 @@
+version: "2"
+services:
+  upwork-rss-backend:
+    container_name: upwork-rss-backend
+    restart: always
+    build: .
+    ports:
+      - "4003:4003"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
